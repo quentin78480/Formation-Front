@@ -19,8 +19,31 @@ CONSIGNE :
     
 */
 
+$(function(){
 
+    $.getJSON('https://jsonplaceholder.typicode.com/users', function(articles) {
 
+        $.each(articles, function(indice,articles){
+
+            $(`
+                <div class="membre">
+                    <div class="membre_informations">
+                        <p>${articles.name}</p>
+                        <p>${articles.username}</p>
+                        <p>${articles.email}</p>
+                        <p>${articles.phone}</p>
+                    </div>
+                </div>
+            `).appendTo($('main'));
+    });
+    $('#markJS').on('input',function(){
+        let keyword = $(this).val();
+        $('section').unmark().mark(keyword);
+
+        if(articles.name === input.search.val() ){
+            console.log("briririri")
+        }
+});
 
 
 
