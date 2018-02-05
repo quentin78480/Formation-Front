@@ -1,0 +1,91 @@
+
+
+// Zone de texte MIN 15 caractere
+// obligatoir de selection un chat
+// En cas de non-validation des champs, les bordures de ceux-ci deviennent rouge. Parailleurs, lorsqu’un champ change, sa bordure reprendra sa couleur par défaut.
+
+
+
+
+var champsInvalid = "-- Sélectionnez --";
+var Test = 0;
+
+
+$(function(){
+    $('#envoyer').on('submit',function(e){
+        
+        e.preventDefault();
+        $('select').attr('class', 'form-control')
+        $('select').attr('class', 'form-control');
+
+        var chat = $('#Choix').val();
+        // console.log(chat);
+        var message = $('textarea').val();
+        // console.log(message);
+               
+            if(message.length < 15){
+                // console.log('bad');
+                $('textarea').attr('class', 'form-control alert alert-danger');
+                alert('La raison doit comporter au moins 15 caractères');
+                Test -= 1; 
+            }
+            else {
+                // console.log('good');
+                Test += 1
+            }
+            if(chat === champsInvalid){  
+                $('select').attr('class', 'form-control alert-danger');
+                alert('Veuillez choisir un chat');
+                Test -= 1;
+            }
+            else {
+                Test += 1;
+            }
+            if(Test === 2){
+               $('#envoyer').replaceWith(`
+               <div class="alert alert-success">
+                   Votre demande d'adoption a bien été envoyée !
+                   Nous vous répondrons dans les meilleurs délais.
+               </div>
+               `)
+            }
+
+    });
+
+});   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

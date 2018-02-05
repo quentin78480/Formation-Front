@@ -1,0 +1,116 @@
+
+body {
+    background:#061339;
+}
+.header {
+    background: url(../img/background.jpg) repeat-x;
+    background-size: contain;
+    padding: 8%;
+    text-align: center;
+}
+
+.mainHaut {
+    background: #F1F1F1;
+}
+.bas {
+    background: #DDDDDD;
+    padding: 30px;
+}
+
+p {
+    padding: 5px;
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
+    font-family: 'Merienda', cursive;
+}
+
+h1 {
+    color: white;
+    margin: 0;
+    font-family: 'Merienda', cursive;
+}
+
+h2 {
+    color: #2F4073;
+    margin: 0;
+    font-family: 'Merienda', cursive;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+h4 {
+    font-size: 1em;
+    color: white;
+    text-align: right;
+}
+
+
+.padding {
+    padding: 30px;
+}
+
+.test {
+    box-sizing: border-box;
+}
+.formChat {
+    background: #F5F5F5;
+    padding: 20px;
+    border: 1px solid #E4E4E4;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.teteChat {
+    background: #7885A5;
+}
+
+
+ section:hover .teteChat{
+    background: #061339;
+    
+}
+
+.btn-primary{
+    margin-top: 10px;
+    background: #5CB85C;
+    width: 100%;
+}
+.btn-primary:hover{
+    background: green;
+}
+
+.center{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
