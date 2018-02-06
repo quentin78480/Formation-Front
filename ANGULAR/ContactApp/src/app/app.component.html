@@ -38,24 +38,15 @@
     <div class="col-sm-4">
       <div>
         <ul class="list-group">
-          <li *ngFor="let contact of mesContacts" (click)="choisirContact(contact)" class="list-group-item"[class.active]="contact === contactActif">
+          <li *ngFor="let contact of mesContacts" (click)="choisirContact(contact)" class="list-group-item" [class.active]="contact === contactActif">
             {{ contact.name}}
           </li>
         </ul>
       </div>
+      <app-ajouter (unContactEstCree)="ajouterContactDansListe($event)"></app-ajouter>
     </div>
     <div class="col-sm-8">
-      <div class="jumbotron" *ngIf="contactActif">
-        <h2>
-          {{ contactActif.name }}
-          <small>{{ contactActif.username }}</small>
-          <input type="text" class="form-control" [(ngModel)]="contactActif.name">
-        </h2>
-      </div>
-      <div class="jumbotron" *ngIf="!contactActif">
-        <span class="glyphicon glyphicon-hand-left"></span>
-        <h2>Bienvennue, choisis un contact !</h2>
-      </div>
+        <app-profil [contact]="contactActif"></app-profil>
     </div>
   </div>
   <footer class="text-center">

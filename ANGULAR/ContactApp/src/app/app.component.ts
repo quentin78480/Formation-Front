@@ -2,8 +2,10 @@
 * Pour déclarer une class comme composant de
 * notre application, on importe " Component " via @angular/core
 */
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Contact } from './shared/models/contact';
+import {UserApiService} from './shared/service/user-api.service';
+import {UserStorageService} from './shared/service/user-storage.service';
 
 
 /**
@@ -35,7 +37,14 @@ import { Contact } from './shared/models/contact';
  * La classe contient les données du composant mais aussi sont comportement.
  * Dans le contexte MV - VM notre classe correspond au ViewModel.
  */
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+
+  constructor (private userApiService: UserApiService,
+               private userStorageService: UserStorageService) {}
+
+
+
   // -- Déclaration d'une variable Titre
   title: string = 'Gestion de mes Contacts';
 
@@ -70,6 +79,16 @@ export class AppComponent {
       email     : 'j.chemla@hl-media.fr'
     }
   ];
+
+  ngOnInit(): void {
+    this.userApiService.getContact().subscribe(
+       contacts => {
+          console.log(contacts);
+          this.mesContacts = contacts;
+       }
+    );
+  }
+
   /**
    * Ma fonction choisir contact, prend un contact
    * en paramètre et le transmet a la variable contactActif
@@ -79,6 +98,13 @@ export class AppComponent {
   choisirContact(contactCliqueParMonUtilisateur) {
     this.contactActif = contactCliqueParMonUtilisateur;
     console.log(this.contactActif);
+  }
+  ajouterContactDansListe(event) {
+    const leContact = event.leContact;
+    let id : number = this.mesContacts.length;
+    leContact.id = id += 1;
+    this.mesContacts.push(leContact);
+    this.userStorageService.save(this.mesContacts);
   }
 }
 
